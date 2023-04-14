@@ -54,3 +54,5 @@ Thumbs.db
 *.http
 docker-compose.yml
 application.yaml
+
+storage/database.json
