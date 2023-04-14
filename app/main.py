@@ -24,11 +24,11 @@ async def root():
     return {"message": "Smart Temperature API"}
 
 
-@app.get("/readings", response_model=List[schemas.ReadingOut], response_model_exclude_none=True)
+@app.get("/readings", response_model=schemas.ReadingOut, response_model_exclude_none=True)
 async def get_temperature_readings():
     reading_q = Query()
-    temperature_readings = list(database.temperature_readings_t.all())
-    return temperature_readings
+    temperature_reading = database.temperature_readings_t.all()[-1]
+    return temperature_reading
 
 
 @app.post("/readings", response_model_exclude_none=True,
